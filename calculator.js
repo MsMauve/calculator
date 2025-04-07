@@ -25,7 +25,7 @@ const clearBtn = document.querySelector("#ac-btn");
 const updateDisplay = (num) => {
     if (display.textContent === '0') {
         display.textContent = num;
-    } else if (display.textContent.length < 12) {
+    } else if (display.textContent.length < 8) {
         display.textContent += num;
     }
     else {
