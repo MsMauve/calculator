@@ -14,6 +14,14 @@ const divide = (a, b) => {
     return a / b;
 }
 
+const abs = (a) => {
+    return 0 - a;
+}
+
+const percent = () => {
+    return 100/a;
+}
+
 let numA;
 let numB;
 let operator;
@@ -42,7 +50,7 @@ const updateDisplay = (num) => {
 };
 
 const clearDisplay = () => {
-    display.textContent = 0;
+    display.textContent = '';
 }
 
 allDigitBtn.forEach((btn) => {
@@ -80,34 +88,54 @@ addBtn.addEventListener('click', function() {
 });
 
 equalsBtn.addEventListener('click',() => {
-    if (Number(display.textContent) && numA) {
+    if (display.textContent && numA) {
         numB = display.textContent;
         switch (operator) {
             case "divide":
-                if (display.textContent === '0') {
-                    display.textContent === 'Nice try, clown.'
+                if ( display.textContent === '0') {
+                    clearDisplay();
+                    alert("Nice try, clown.");
                     break;
                 } else {
-                    display.textContent = divide(numA, numB);
+                    clearDisplay();
+                    updateDisplay(divide(numA, numB));
                     numA = null;
                     numB = null;
                     break;
                 }
             case "multiply":
-                display.textContent = multiply(numA, numB);
+                clearDisplay();
+                updateDisplay(multiply(numA, numB));
                 numA = null;
                 numB = null;
                 break;
             case "subtract":
-                display.textContent = subtract(numA, numB);
+                clearDisplay();    
+                updateDisplay(subtract(numA, numB));
                 numA = null;
                 numB = null;
                 break;
             case "add":
-                display.textContent = add(numA, numB);
+                clearDisplay();
+                updateDisplay(add(numA, numB));
                 numA = null;
                 numB = null;
                 break;
         }
     }
 });
+
+absBtn.addEventListener('click', function() {
+    clearDisplay();
+    updateDisplay(abs(display.textContent));
+});
+
+percentBtn.addEventListener('click', function() {
+    clearDisplay();
+    updateDisplay(percent(display.textContent));
+});
+
+decimalBtn.addEventListener('click', function() {
+    if (!display.textContent.includes('.'))
+        display.textContent += '.';
+})
