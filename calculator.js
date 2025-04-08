@@ -21,7 +21,6 @@ let operator;
 const display = document.querySelector("#display");
 const allDigitBtn = document.querySelectorAll(".num-btn");
 const clearBtn = document.querySelector("#ac-btn");
-const displayNum = display.textContent;
 const equalsBtn = document.querySelector("#equals-btn");
 const absBtn = document.querySelector("#abs-btn");
 const percentBtn = document.querySelector("#percent-btn");
@@ -32,10 +31,10 @@ const addBtn = document.querySelector("#add-btn");
 const decimalBtn = document.querySelector("#decimal-btn");
 
 const updateDisplay = (num) => {
-    if (displayNum === '0') {
-        displayNum = num;
-    } else if (displayNum.length < 6) {
-        displayNum += num;
+    if (display.textContent === '0') {
+        display.textContent = num;
+    } else if (display.textContent.length < 6) {
+        display.textContent += num;
     }
     else {
         alert("Sorry, it's a mini calculator!");
@@ -43,7 +42,7 @@ const updateDisplay = (num) => {
 };
 
 const clearDisplay = () => {
-    displayNum = 0;
+    display.textContent = 0;
 }
 
 allDigitBtn.forEach((btn) => {
@@ -57,50 +56,55 @@ clearBtn.addEventListener('click', function() {
 });
 
 divideBtn.addEventListener('click', function() {
-    numA = displayNum;
+    numA = display.textContent;
     operator = "divide";
     clearDisplay();
 });
 
 multiplyBtn.addEventListener('click', function() {
-    numA = displayNum;
+    numA = display.textContent;
     operator = "multiply";
     clearDisplay();
 });
 
 subtractBtn.addEventListener('click', function() {
-    numA = displayNum;
+    numA = display.textContent;
     operator = "subtract";
     clearDisplay();
 });
 
 addBtn.addEventListener('click', function() {
-    numA = displayNum;
+    numA = display.textContent;
     operator = "add";
     clearDisplay();
 });
 
 equalsBtn.addEventListener('click',() => {
-    if (Number(displayNum) && numA) {
-        numB = displayNum;
+    if (Number(display.textContent) && numA) {
+        numB = display.textContent;
         switch (operator) {
             case "divide":
-                displayNum = divide(numA, numB);
-                numA = null;
-                numB = null;
-                break;
+                if (display.textContent === '0') {
+                    display.textContent === 'Nice try, clown.'
+                    break;
+                } else {
+                    display.textContent = divide(numA, numB);
+                    numA = null;
+                    numB = null;
+                    break;
+                }
             case "multiply":
-                displayNum = multiply(numA, numB);
+                display.textContent = multiply(numA, numB);
                 numA = null;
                 numB = null;
                 break;
             case "subtract":
-                displayNum = subtract(numA, numB);
+                display.textContent = subtract(numA, numB);
                 numA = null;
                 numB = null;
                 break;
             case "add":
-                displayNum = add(numA, numB);
+                display.textContent = add(numA, numB);
                 numA = null;
                 numB = null;
                 break;
