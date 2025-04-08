@@ -19,7 +19,7 @@ const abs = (a) => {
 }
 
 const percent = (a) => {
-    return a / 100;
+    return (a / 100);
 }
 
 let numA;
@@ -98,26 +98,26 @@ equalsBtn.addEventListener('click',() => {
                     break;
                 } else {
                     clearDisplay();
-                    updateDisplay(divide(numA, numB));
+                    updateDisplay((divide(numA, numB)).toFixed(4));
                     numA = null;
                     numB = null;
                     break;
                 }
             case "multiply":
                 clearDisplay();
-                updateDisplay(multiply(numA, numB));
+                updateDisplay(multiply(numA, numB).toFixed(4));
                 numA = null;
                 numB = null;
                 break;
             case "subtract":
                 clearDisplay();    
-                updateDisplay(subtract(numA, numB));
+                updateDisplay(subtract(numA, numB).toFixed(4));
                 numA = null;
                 numB = null;
                 break;
             case "add":
                 clearDisplay();
-                updateDisplay(add(numA, numB));
+                updateDisplay(add(numA, numB).toFixed(4));
                 numA = null;
                 numB = null;
                 break;
