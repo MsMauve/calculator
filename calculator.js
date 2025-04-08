@@ -50,7 +50,7 @@ const updateDisplay = (num) => {
 };
 
 const clearDisplay = () => {
-    display.textContent = '';
+    display.textContent = '0';
 }
 
 allDigitBtn.forEach((btn) => {
