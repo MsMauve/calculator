@@ -18,8 +18,8 @@ const abs = (a) => {
     return 0 - a;
 }
 
-const percent = () => {
-    return 100/a;
+const percent = (a) => {
+    return a / 100;
 }
 
 let numA;
@@ -126,13 +126,11 @@ equalsBtn.addEventListener('click',() => {
 });
 
 absBtn.addEventListener('click', function() {
-    clearDisplay();
-    updateDisplay(abs(display.textContent));
+    display.textContent = abs(display.textContent);
 });
 
 percentBtn.addEventListener('click', function() {
-    clearDisplay();
-    updateDisplay(percent(display.textContent));
+    display.textContent = percent(display.textContent);
 });
 
 decimalBtn.addEventListener('click', function() {
